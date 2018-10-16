@@ -1,29 +1,50 @@
 <template>
   <div id="app">
-    <HeaderTop></HeaderTop>
+    <HeaderTop v-if='topShow'></HeaderTop>
+    <HeaderTitle v-else></HeaderTitle>
     <div class="content">
       <router-view/>
     </div>
-    <FooterBottom></FooterBottom>
+    <FooterBottom v-if='botShow'></FooterBottom>
   </div>
 </template>
 
 <script>
 import FooterBottom from './components/FooterBottom.vue'
 import HeaderTop from './components/HeaderTop.vue'
+import HeaderTitle from './components/HeaderTitle.vue'
+
   export default {
     name: 'app',
     components:{
       FooterBottom,
-      HeaderTop
+      HeaderTop,
+      HeaderTitle
+    },
+    computed:{
+      botShow(){
+        if(this.$route.name == 'login'){
+          return false
+        }else{
+          return true
+        }
+      },
+      topShow(){
+        switch(this.$route.name){
+          case 'index': return true;
+          case 'notice': return true;
+          case 'user': return true;
+          default: return false
+        }
+      }
     }
   }
 </script>
 
 <style lang="scss">
 .content{
-  // margin-top: 45px;
-  // padding-bottom: 1.12rem;;
+  padding-top: 0.88rem;
+  padding-bottom: 0.92rem;
 }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
