@@ -33,7 +33,7 @@ export default {
     };
   },
   methods: {
-    add0(m){
+    add0(m) {
       return m < 10 ? "0" + m : m;
     },
     getTimer(timestr) {
@@ -44,17 +44,30 @@ export default {
       var h = time.getHours();
       var mm = time.getMinutes();
       var s = time.getSeconds();
-      return (y+"-"+this.add0(m)+"-"+this.add0(d)+" "+this.add0(h)+":"+this.add0(mm)+":"+this.add0(s));
+      return (
+        y +
+        "-" +
+        this.add0(m) +
+        "-" +
+        this.add0(d) +
+        " " +
+        this.add0(h) +
+        ":" +
+        this.add0(mm) +
+        ":" +
+        this.add0(s)
+      );
     },
     getData() {
       this.$axios
-        .get(`news/newsList.do?page=${this.page}&rows=10&type=2`).then(res => {
-          console.log(res);
+        .get(`news/newsList.do?page=${this.page}&rows=10&type=2`)
+        .then(res => {
+          // console.log(res);
           if (res.code == 1) {
-            res.rows.map(item => { 
-              item.createTime = this.getTimer(item.createTime)
-              return item
-            })
+            res.rows.map(item => {
+              item.createTime = this.getTimer(item.createTime);
+              return item;
+            });
             this.rows = this.rows.concat(res.rows);
             // this.rows = res.rows;
             if (res.rows != "") {

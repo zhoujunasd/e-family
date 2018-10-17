@@ -22,19 +22,19 @@
     <div class="main-menu">
       <div class="row">
         <router-link to="/menu/0" class="menu-item">
-          <div >
+          <div>
             <img src="../../assets/imgs/icon_01.png" alt="">
           </div>
           <div class="menu-item-title">信工新闻眼</div>
         </router-link>
-        <router-link to="/" class="menu-item">
-          <div >
+        <router-link to="/handlive" class="menu-item">
+          <div>
             <img src="../../assets/imgs/icon_02.png" alt="">
           </div>
           <div class="menu-item-title">掌上组织生活</div>
         </router-link>
         <router-link to="/" class="menu-item">
-          <div  >
+          <div>
             <img src="../../assets/imgs/icon_03.png" alt="">
           </div>
           <div class="menu-item-title">党员云互动</div>
@@ -42,19 +42,19 @@
       </div>
       <div class="row">
         <router-link to="/menu/3" class="menu-item">
-          <div >
+          <div>
             <img src="../../assets/imgs/icon_04.png" alt="">
           </div>
           <div class="menu-item-title">党建一点通</div>
         </router-link>
         <router-link to="/menu/5" class="menu-item">
-          <div >
+          <div>
             <img src="../../assets/imgs/icon_05.png" alt="">
           </div>
           <div class="menu-item-title">党员量身份</div>
         </router-link>
-        <router-link to="/" class="menu-item">
-          <div  >
+        <router-link to="/his_tody" class="menu-item">
+          <div>
             <img src="../../assets/imgs/icon_06.png" alt="">
           </div>
           <div class="menu-item-title">党史上的今天</div>
@@ -70,12 +70,12 @@
       </div>
       <div class="bottom-right">
         <div class="bottom-row">
-          <router-link to='/'></router-link>
-          <router-link to='/'></router-link>
+          <router-link to='/menu/6'></router-link>
+          <router-link to='/anyphoto'></router-link>
         </div>
         <div class="bottom-row">
-          <router-link to='/'></router-link>
-          <router-link to='/'></router-link>
+          <router-link to='/menu/4'></router-link>
+          <router-link to='/menu/1'></router-link>
         </div>
       </div>
     </div>
@@ -83,18 +83,18 @@
 </template>
 
 <script>
-import { swiper, swiperSlide,  } from "vue-awesome-swiper";
-import { MessageBox, Spinner } from 'mint-ui';
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+import { MessageBox, Spinner } from "mint-ui";
 
 export default {
   name: "home",
   data() {
     return {
-      swiper: null ,
+      swiper: null,
       swiperOption: {
         // autoplay: true,
         pagination: {
-          el: ".swiper-pagination",
+          el: ".swiper-pagination"
           // autoplay: true
         }
       }
@@ -103,7 +103,7 @@ export default {
   components: {
     swiper,
     swiperSlide,
-    Spinner,
+    Spinner
   },
   methods: {
     getSwiper() {
@@ -113,7 +113,7 @@ export default {
           this.swiper = res.rows;
           // this.$message.info('aaa')
         } else {
-          MessageBox('错误', '网络请求超时');
+          MessageBox("错误", "网络请求超时");
         }
       });
     }
@@ -126,7 +126,7 @@ export default {
 };
 </script>
 <style scoped lang='scss'>
-.spinner{
+.spinner {
   width: 100%;
   height: 3.9rem;
   display: flex;
@@ -137,7 +137,7 @@ export default {
   .home-title {
     background-color: skyblue;
   }
-  .item{
+  .item {
     width: 100%;
     height: 3.85rem;
   }
@@ -159,63 +159,64 @@ export default {
     width: 100%;
     height: 0.4rem;
     font-size: 0.28rem;
-    background: rgba(0, 0, 0,.5);
+    background: rgba(0, 0, 0, 0.5);
   }
 }
-.main-menu{
+.main-menu {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 3.94rem;
   // background-color: #000;
-  background: url('../../assets/imgs/bt_bg.png') no-repeat;
+  background: url("../../assets/imgs/bt_bg.png") no-repeat;
   background-size: 100%;
   z-index: 12;
-  .row{
+  .row {
     display: flex;
-    .menu-item{
+    .menu-item {
       flex: 1;
       text-align: center;
+      // border: 1px solid #000
     }
-    .menu-item-title{
+    .menu-item-title {
       font-size: 0.24rem;
 
       height: 0.4rem;
       line-height: 0.4rem;
     }
-    img{
+    img {
       width: 1rem;
     }
   }
 }
-.banner{
+.banner {
   width: 100%;
-  img{
+  img {
     display: block;
     width: 100%;
   }
 }
-.home-bottom{
+.home-bottom {
   width: 100%;
-  height:3.3rem;
-  background: url('../../assets/imgs/专栏.png') no-repeat;
+  height: 3.3rem;
+  background: url("../../assets/imgs/专栏.png") no-repeat;
   background-size: 100%;
   display: flex;
-  .bottom-right{
+  .bottom-right {
     flex: 2;
-    .bottom-row{
+    .bottom-row {
       height: 50%;
       display: flex;
-      a{
+      a {
         flex: 1;
         width: 2.5rem;
         height: 1.65rem;
       }
     }
   }
-  .bottom-left{
+  .bottom-left {
     flex: 1;
-  } 
+  }
 }
 </style>
 

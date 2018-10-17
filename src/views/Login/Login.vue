@@ -6,13 +6,13 @@
             </div>
             <form class="form" @submit.prevent>
                 <div class="input-wrap">
-                    <input type="text" v-model="formData.username" placeholder="身份证号">
+                    <input type="text" v-model="formData.id_card" placeholder="身份证号">
                 </div>
                 <div class="input-wrap">
                     <input type="password" v-model="formData.password" placeholder="密码">
                 </div>
                 <div class="input-wrap">
-                    <mt-button class="login-btn" size='normal'>登录</mt-button>
+                    <mt-button class="login-btn" @click="Logining" size='normal'>登录</mt-button>
                 </div>
             </form>
         </div>
@@ -20,17 +20,33 @@
 </template>
 
 <script>
-import { Button } from "mint-ui";
+import { Button,MessageBox } from "mint-ui";
 export default {
   name: "Login",
   components: { Button },
   data() {
     return {
       formData: {
-        username: "",
+        id_card: "",
         password: ""
       }
     };
+  },
+  methods:{
+    Logining(){
+      this.$axios.post('/user/userLogin.do',this.formData,{
+          'Content-Type':'application/x-www-form-urlencoded'
+      }).then((res) => {
+        console.log(res);
+        if(res.code == 1){
+
+        }else{
+          MessageBox('错误',res.msg)
+        }
+      }).catch((err) => {
+        MessageBox('错误',res.msg)
+      })
+    }
   }
 };
 </script>

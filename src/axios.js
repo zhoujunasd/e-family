@@ -25,9 +25,20 @@ const xhr = {
             })
         })
     },
-    post(url, data, config,){
-        return this.fetch(url, data, config, 'post')
-    }
+    // post(url, data, config,){
+    //     return this.fetch(url, data, config, 'post')
+    // },
+    post(url,data,config,method='post'){
+        instance.headers={'Content-Type': 'application/x-www-form-urlencoded'}
+        return new Promise((resolve,reject)=>{
+            instance[method](url,data,config).then(res=>{
+            resolve(res.data)
+          })
+        }).catch(err=>{
+          reject(err)
+        })
+      },
+    
 }
 
 export default xhr

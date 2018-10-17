@@ -24,7 +24,7 @@ export default {
     height: 0.88rem !important;
     background:  #c50206 !important;
     .mint-header-title {
-        font-size: 0.32rem
+        font-size: 0.36rem
     }
 }
 </style>

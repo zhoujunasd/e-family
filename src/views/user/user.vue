@@ -31,12 +31,11 @@
 <script>
 export default {
   name: "user",
-  components:{
-  },
-  data(){
-      return{
-          info: false
-      }
+  components: {},
+  data() {
+    return {
+      info: false
+    };
   }
 };
 </script>

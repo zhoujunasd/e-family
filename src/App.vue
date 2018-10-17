@@ -2,10 +2,10 @@
   <div id="app">
     <HeaderTop v-if='topShow'></HeaderTop>
     <HeaderTitle v-else></HeaderTitle>
-    <div class="content">
-      <router-view/>
-    </div>
-    <FooterBottom v-if='botShow'></FooterBottom>
+      <div :class="{contentasd:true, content: topShow}">
+        <router-view/>
+      </div>
+    <FooterBottom v-if='topShow'></FooterBottom>
   </div>
 </template>
 
@@ -22,13 +22,13 @@ import HeaderTitle from './components/HeaderTitle.vue'
       HeaderTitle
     },
     computed:{
-      botShow(){
-        if(this.$route.name == 'login'){
-          return false
-        }else{
-          return true
-        }
-      },
+      // botShow(){
+      //   if(this.$route.name == 'login'){
+      //     return false
+      //   }else{
+      //     return true
+      //   }
+      // },
       topShow(){
         switch(this.$route.name){
           case 'index': return true;
@@ -42,6 +42,9 @@ import HeaderTitle from './components/HeaderTitle.vue'
 </script>
 
 <style lang="scss">
+.contentasd{
+  padding-top: 0.88rem;
+}
 .content{
   padding-top: 0.88rem;
   padding-bottom: 0.92rem;
@@ -65,5 +68,18 @@ li {
 a,a:link,a:visited,a:hover,a:active{
   text-decoration: none;
   color:inherit;
+}
+.fll{
+  float: left;
+}
+.flr{
+  float: right;
+}
+.clearfix::after{
+  content: '';
+  display:block;
+  clear: both;
+  height: 0;
+  width: 0;
 }
 </style>
