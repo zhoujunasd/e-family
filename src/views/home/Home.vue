@@ -11,7 +11,7 @@
     <Spinner class="spinner" v-if='!swiper' :size="60" type="double-bounce"></Spinner>
     <swiper v-else :options="swiperOption">
       <swiper-slide v-for="(item,index) in swiper" :key="index">
-        <div class="item">
+        <div @click="todetails(item.url)" class="item">
           <img :src="item.imgUrl" alt="" class="swiperitem">
           <div class="info">{{item.title}}</div>
         </div>
@@ -33,7 +33,7 @@
           </div>
           <div class="menu-item-title">掌上组织生活</div>
         </router-link>
-        <router-link to="/" class="menu-item">
+        <router-link to="/cloud" class="menu-item">
           <div>
             <img src="../../assets/imgs/icon_03.png" alt="">
           </div>
@@ -106,6 +106,10 @@ export default {
     Spinner
   },
   methods: {
+    todetails(newsId){
+      // console.log(newsId);
+      this.$router.push({name: 'men_art',params: {id: newsId}})
+    },
     getSwiper() {
       this.$axios.get("/carousel/carouselList.do", { type: 0 }).then(res => {
         // console.log(res);
@@ -116,7 +120,10 @@ export default {
           MessageBox("错误", "网络请求超时");
         }
       });
-    }
+    },
+  },
+  watch:{
+
   },
   mounted() {},
   computed: {},

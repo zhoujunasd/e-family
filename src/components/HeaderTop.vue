@@ -2,7 +2,8 @@
     <div class="header-top">
         <div v-if="isShow" class="home">
             <img class="top-img" src="../assets/imgs/logo.png" alt="">
-            <a href="#/login">登录</a>
+            <a v-if='!userData.header' href="#/login">登录</a>
+            <!-- <button v-show='{}'>编辑</button> -->
         </div>
         <div v-else class="top-title">
             <div>{{ $route.name == 'notice' ? '通知早知道' : '我的党建' }}</div>
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
     export default {
         data(){
             return {
@@ -20,6 +22,7 @@
         },
         name:'headerTop',
         computed:{
+             ...mapState(['userData']),
             isShow(){
                 if(this.$route.name == 'index'){
                     return true

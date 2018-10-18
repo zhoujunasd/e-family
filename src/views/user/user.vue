@@ -1,41 +1,74 @@
 <template>
-    <div class="user-content">
-        <div class="top-message">
-            <div class="top-img">
-                <img src="../../assets/imgs/bt_bg.png" alt="">
-            </div>
-            <div class="top-title">
-                <div v-if="info">{message}</div>
-                <router-link to="/login" v-else>你还没有登录，请登录</router-link>
-            </div>
-        </div>
-        <div class="user-content">
-            <div class="user-menu">
-                <router-link class="menu-item" to="/">
-                    <img class="icon-left" src="../../assets/imgs/icon_01.png" alt="">个人信息<img class="icon-right" src="../../assets/imgs/right.png" alt="">
-                </router-link>
-                <router-link class="menu-item" to="/">
-                    <img class="icon-left" src="../../assets/imgs/icon_02.png" alt="">个人量化积分<img class="icon-right" src="../../assets/imgs/right.png" alt="">
-                </router-link>
-                <router-link class="menu-item" to="/">
-                    <img class="icon-left" src="../../assets/imgs/icon_03.png" alt="">修改密码<img class="icon-right" src="../../assets/imgs/right.png" alt="">
-                </router-link>
-                <router-link class="menu-item" to="/">
-                    <img class="icon-left" src="../../assets/imgs/icon_04.png" alt="">党费缴纳<img class="icon-right" src="../../assets/imgs/right.png" alt="">
-                </router-link>
-            </div>
-        </div>
+  <div class="user-content">
+    <div class="top-message">
+      <div class="top-img">
+        <img v-if='!userData.header' src='../../assets/imgs/bt_bg.png' alt="">
+        <img v-else :src='userData.header' alt="">
+      </div>=
+      <div class="top-title">
+        <div v-if="userData.username">{{userData.username}}</div>
+        <router-link to="/login" v-else>你还没有登录，请登录</router-link>
+      </div>
     </div>
+    <div class="user-content">
+      <div class="user-menu">
+        <router-link class="menu-item" v-focus to="/userInfo">
+          <img class="icon-left" src="../../assets/imgs/icon_01.png" alt="">个人信息<img class="icon-right" src="../../assets/imgs/right.png" alt="">
+        </router-link>
+        <router-link class="menu-item" to="/">
+          <img class="icon-left" src="../../assets/imgs/icon_02.png" alt="">个人量化积分<img class="icon-right" src="../../assets/imgs/right.png" alt="">
+        </router-link>
+        <router-link class="menu-item" to="/">
+          <img class="icon-left" src="../../assets/imgs/icon_03.png" alt="">修改密码<img class="icon-right" src="../../assets/imgs/right.png" alt="">
+        </router-link>
+        <router-link class="menu-item" to="/">
+          <img class="icon-left" src="../../assets/imgs/icon_04.png" alt="">党费缴纳<img class="icon-right" src="../../assets/imgs/right.png" alt="">
+        </router-link>
+      </div>
+    </div>
+    <div v-if="userData.username" class="user-btn">
+      <button @click="layout">退出登录</button>
+    </div>
+  </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "user",
   components: {},
   data() {
     return {
-      info: false
+      info: false,
     };
+  },
+  methods: {
+    layout() {
+      this.$router.push("/login");
+      this.$store.commit("GTE_INFO", '');
+      this.$store.commit("GTE_TOKEN", '');
+    }
+  },
+  directives: {
+    focus:{
+      inserted:(el,binding)=> {
+        // console.log(binding);
+        // console.dir(el);
+        // console.log(el);
+        // console.dir(el.href)
+        // el.href = 'http://localhost:8080/#/index'
+        // el.hash = "#notice"
+        // console.dir(el.hash)
+        // console.dir(el.href)
+        // console.log(el);
+      }
+    }
+  },
+  watch: {
+
+  },
+  computed: {
+    ...mapState(["userData"]),
   }
 };
 </script>
@@ -67,6 +100,7 @@ export default {
   width: 100%;
   .user-menu {
     width: 100%;
+    margin-bottom: 0.2rem;
     .menu-item {
       display: block;
       padding: 0.32rem 1.08rem;
@@ -96,5 +130,33 @@ export default {
       }
     }
   }
+  .user-btn {
+    width: 100%;
+    padding: 0.2rem;
+    box-sizing: border-box;
+    button {
+      width: 100%;
+      padding: 0 0.24rem;
+      border-color: transparent;
+      background-color: #ef473a;
+      color: #fff;
+      margin: 0.2rem 0;
+      min-width: 50px;
+      min-height: 45px;
+      border-radius: 4px;
+      vertical-align: top;
+      text-align: center;
+      text-overflow: ellipsis;
+      font-size: 0.32rem;
+      line-height: 0.84rem;
+    }
+  }
 }
+// http://oowantxlb.bkt.clouddn.com/upload/front/d5a425c8da6bc89f34260914aed7d3ce.png
+// http://oowantxlb.bkt.clouddn.com/upload/front/5167b45bcba29c69c5ba024fd62af637.png
+// http://oowantxlb.bkt.clouddn.com/upload/front/6257541e9c8e82323646abc6dbc574ab.png
+// branchId: 29A1C8A892B84B1AA81C877499F7497F
+// education: 31111111
 </style>
+
+
