@@ -4,7 +4,7 @@
       <div class="top-img">
         <img v-if='!userData.header' src='../../assets/imgs/bt_bg.png' alt="">
         <img v-else :src='userData.header' alt="">
-      </div>=
+      </div>
       <div class="top-title">
         <div v-if="userData.username">{{userData.username}}</div>
         <router-link to="/login" v-else>你还没有登录，请登录</router-link>
@@ -15,7 +15,7 @@
         <router-link class="menu-item" v-focus to="/userInfo">
           <img class="icon-left" src="../../assets/imgs/icon_01.png" alt="">个人信息<img class="icon-right" src="../../assets/imgs/right.png" alt="">
         </router-link>
-        <router-link class="menu-item" to="/">
+        <router-link class="menu-item" to="/userPoint">
           <img class="icon-left" src="../../assets/imgs/icon_02.png" alt="">个人量化积分<img class="icon-right" src="../../assets/imgs/right.png" alt="">
         </router-link>
         <router-link class="menu-item" to="/">
@@ -47,6 +47,11 @@ export default {
       this.$router.push("/login");
       this.$store.commit("GTE_INFO", '');
       this.$store.commit("GTE_TOKEN", '');
+    },
+    getData(){
+      this.$axios.get('user/userInfo.do').then((res) => {
+        this.$store.commit("GTE_INFO", res.data);
+      })
     }
   },
   directives: {
@@ -63,6 +68,9 @@ export default {
         // console.log(el);
       }
     }
+  },
+  created(){
+    this.getData()
   },
   watch: {
 

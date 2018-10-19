@@ -3,7 +3,6 @@
         <div v-if="isShow" class="home">
             <img class="top-img" src="../assets/imgs/logo.png" alt="">
             <a v-if='!userData.header' href="#/login">登录</a>
-            <!-- <button v-show='{}'>编辑</button> -->
         </div>
         <div v-else class="top-title">
             <div>{{ $route.name == 'notice' ? '通知早知道' : '我的党建' }}</div>
@@ -31,6 +30,7 @@ import { mapState } from 'vuex'
                 }
             } 
         },
+        created(){ }
         // watch:{
         //     $route(){
         //         console.log(this.$route);

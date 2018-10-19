@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     userData: {},
     token: '',
+    readOnly: true,
   },
   mutations: {
     GTE_INFO(state,userinfo){
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     GTE_TOKEN(state,token){
       state.token = token
+    },
+    CHANGE_READ(state){
+      state.readOnly = !state.readOnly
     },
   },
   actions: {},

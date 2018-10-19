@@ -19,7 +19,7 @@ import isLoading from "../../components/Loading";
         methods:{
             getData(){
                 this.isloading = true
-                this.$axios.get('http://211.67.177.56:8080/hhdj/proxy/proxy.do?url=http:%2F%2Fcpc.people.com.cn%2FGB%2F64162%2F64165%2F70486%2F70503%2Findex.html').then((res) => {
+                this.$axios.get('http://211.67.177.56:8080/hhdj/proxy/proxy.do?url=http:%2F%2Fcpc.people.com.cn%2FGB%2F64162%2F64165%2F70486%2F70505%2Findex.html').then((res) => {
                     // console.log(res);
                     // this.data = res
                     let p = /<!--content-->/;
@@ -37,11 +37,12 @@ import isLoading from "../../components/Loading";
             this.getData()
         },
     }
+    // http://211.67.177.56:8080/hhdj/proxy/proxy.do?url=http:%2F%2Fcpc.people.com.cn%2FGB%2F64162%2F64165%2F70486%2F70505%2Findex.html
 </script>
-
 <style scoped lang='scss'>
 .his-message{
-    font-size: .28rem;
+    font-size: 14px;
+    // font-size: .28rem;
     padding: .2rem;
     line-height: 2;
 }

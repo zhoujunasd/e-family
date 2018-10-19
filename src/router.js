@@ -10,6 +10,7 @@ const components = {
   User: () => import('./views/user/user.vue'),
   userInfo: () => import('./views/user/userInfo.vue'),
   cloudInteract: () => import('./views/user/cloudInteract.vue'),
+  userPoint: () => import('./views/user/userPoint.vue'),
   Login: () => import('./views/Login/Login.vue'),
   MenuItem: () => import('./views/Menuitem/ListMessage.vue'),
   MenuArticle: () => import('./views/Menuitem/MenuArticle.vue'),
@@ -75,13 +76,38 @@ const router =  new Router({
       path: '/userInfo',
       name: 'userInfo',
       meta:{ title: '个人信息',requireAuth: true },
-      component: components.userInfo
+      component: components.userInfo,
+      beforeEnter:(to,from,next) => {
+        // console.log('userInfo',from.path,to.path);
+        // if(from.path == '/userInfo' && to.path == '/updateInfo'){
+        //   next({
+        //     path: '/user'
+        //   })
+        // }else{
+        //   next()
+        // }
+        next()
+      }
+    },{
+      path: '/updateInfo',
+      name: 'updateInfo',
+      meta:{ title: '修改个人信息'},
+      component: components.userInfo,
+      beforeEnter:(to,from,next) => {
+        // console.log('updateInfo',from.path,to.path);
+        next()
+      }
     },{
       path: '/cloud',
       name: 'cloud',
       // requireAuth: true:判断是否需要登录拦截
       meta:{ title: '党员云互动',requireAuth: true },
       component: components.cloudInteract
+    },{
+      path: '/userPoint',
+      name: 'userPoint',
+      meta:{ title: '个人量化积分',requireAuth: true },
+      component: components.userPoint
     }
   ]
 });
