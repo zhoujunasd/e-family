@@ -2,11 +2,11 @@
   <div class="user-content">
     <div class="top-message">
       <div class="top-img">
-        <img v-if='!userData.header' src='../../assets/imgs/bt_bg.png' alt="">
+        <img v-if='!userData' src='../../assets/imgs/bt_bg.png' alt="">
         <img v-else :src='userData.header' alt="">
       </div>
       <div class="top-title">
-        <div v-if="userData.username">{{userData.username}}</div>
+        <div v-if="userData">{{userData.username}}</div>
         <router-link to="/login" v-else>你还没有登录，请登录</router-link>
       </div>
     </div>
@@ -18,15 +18,15 @@
         <router-link class="menu-item" to="/userPoint">
           <img class="icon-left" src="../../assets/imgs/icon_02.png" alt="">个人量化积分<img class="icon-right" src="../../assets/imgs/right.png" alt="">
         </router-link>
-        <router-link class="menu-item" to="/">
+        <router-link class="menu-item" to="/editPassword">
           <img class="icon-left" src="../../assets/imgs/icon_03.png" alt="">修改密码<img class="icon-right" src="../../assets/imgs/right.png" alt="">
         </router-link>
-        <router-link class="menu-item" to="/">
+        <router-link class="menu-item" to="/partyCost">
           <img class="icon-left" src="../../assets/imgs/icon_04.png" alt="">党费缴纳<img class="icon-right" src="../../assets/imgs/right.png" alt="">
         </router-link>
       </div>
     </div>
-    <div v-if="userData.username" class="user-btn">
+    <div v-if="userData" class="user-btn">
       <button @click="layout">退出登录</button>
     </div>
   </div>

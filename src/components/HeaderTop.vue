@@ -2,7 +2,7 @@
     <div class="header-top">
         <div v-if="isShow" class="home">
             <img class="top-img" src="../assets/imgs/logo.png" alt="">
-            <a v-if='!userData.header' href="#/login">登录</a>
+            <a v-if='!userData' href="#/login">登录</a>
         </div>
         <div v-else class="top-title">
             <div>{{ $route.name == 'notice' ? '通知早知道' : '我的党建' }}</div>

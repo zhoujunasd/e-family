@@ -32,7 +32,7 @@ export default {
           if (res.code == 1) {
             // this.rows = res.rows
             this.rows = this.rows.concat(res.rows);
-            console.log(this.rows);
+            // console.log(this.rows);11
             if (res.rows != "") {
               this.page++;
               this.getData();

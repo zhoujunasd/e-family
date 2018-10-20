@@ -1,7 +1,7 @@
 <template>
   <mt-header fixed :title="title">
     <!-- <mt-button icon="back" slot="left" @click="$router.back()"></mt-button> -->
-    <mt-button icon="back" slot="left" @click="backhandle" v-if='this.$route.path == "/updateInfo" || this.$route.path == "/userInfo"'></mt-button>
+    <mt-button icon="back"  slot="left" @click="backhandle" v-if='this.$route.path == "/updateInfo" || this.$route.path == "/userInfo"'></mt-button>
     <mt-button v-else icon="back" slot="left" @click="$router.back()"></mt-button>
     <mt-button @click="readonly" slot="right" v-if='$route.name == "userInfo" ||$route.name == "updateInfo"'>{{readonlytop? '编辑' : '保存'}}</mt-button>
   </mt-header>
@@ -48,7 +48,8 @@ export default {
           salary: this.$store.state.userData.salary,
           joinPartyTime: this.$store.state.userData.joinPartyTime,
           lastPayTime: this.$store.state.userData.lastPayTime,
-          partyStatus: this.$store.state.userData.partyStatus
+          partyStatus: this.$store.state.userData.partyStatus,
+          header: this.$store.state.img
         };
         this.$axios.post("/user/modifyInfo.do", formData).then(res => {
           // console.log(res);

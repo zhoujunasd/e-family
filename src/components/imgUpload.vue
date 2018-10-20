@@ -37,51 +37,52 @@ export default {
         this.token = res.data.data;
       });
     },
-    // upload() {
-    //   let reader = new FileReader();
-    //   let AllowImgFileSize = 2100000; //上传图片最大值(单位字节);
-    //   let file = event.target.files[0];
-    //   let imgUrlBase64;
-    //   let _this = this
-    //   if (file) {
-    //     imgUrlBase64 = reader.readAsDataURL(file);
-    //     reader.onload = function(e) {
-    //       var ImgFileSize = reader.result.substring( reader.result.indexOf(",") + 1 ).length; //截取base64码部分（可选可不选，需要与后台沟通）
-    //       if ( AllowImgFileSize != 0 && AllowImgFileSize < reader.result.length ) {
-    //         alert("上传失败，请上传不大于2M的图片！");
-    //         return;
-    //       } else {
-    //         //执行上传操作
-    //         let datastr = reader.result.substring(23, ImgFileSize)
-    //         // console.log(reader.result);
-    //         // console.log(datastr);
-    //         let formData = new FormData();
-    //         formData.append("myFile", reader.result);
-    //         _this.$axios.post('/image/uploadBase64.do',formData,{
-    //           headers: {
-    //             "Content-Type": "application/x-www-form-urlencoded"
-    //           }
-    //         }).then((res) => {
-    //           console.log(res);
-    //         })
-    //       }
-    //     };
-    //   }
-    // }
-    upload(event) {
+    upload() {
+      let reader = new FileReader();
+      let AllowImgFileSize = 2100000; //上传图片最大值(单位字节);
       let file = event.target.files[0];
-      let formData = new FormData();
-      formData.append("file", file,file.name);
-      formData.append("token", this.token);
-      axios.post("https://upload-z1.qiniup.com", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data"
+      let imgUrlBase64;
+      let _this = this
+      if (file) {
+        imgUrlBase64 = reader.readAsDataURL(file);
+        reader.onload = function(e) {
+          var ImgFileSize = reader.result.substring( reader.result.indexOf(",") + 1 ).length; //截取base64码部分（可选可不选，需要与后台沟通）
+          if ( AllowImgFileSize != 0 && AllowImgFileSize < reader.result.length ) {
+            alert("上传失败，请上传不大于2M的图片！");
+            return;
+          } else {
+            //执行上传操作
+            let datastr = reader.result.substring(23, ImgFileSize)
+            // console.log(reader.result);
+            // console.log(datastr);
+            // let formData = new FormData();
+            // formData.append("myFile", datastr);
+            _this.$axios.post('/image/uploadBase64.do',{myFile:datastr},{
+              // headers: {
+              //   "Content-Type": "x-www-form-urlencoded"
+              // }
+            }).then((res) => {
+              console.log(res);
+              _this.$store.commit('CHANGE_IMG',res.url)
+            })
           }
-        }).then(res => {
-          // console.log(res);
-          this.$emit("success", res.data.url);
-        });
+        };
+      }
     }
+    // upload(event) {
+    //   let file = event.target.files[0];
+    //   let formData = new FormData();
+    //   formData.append("file", file,file.name);
+    //   formData.append("token", this.token);
+    //   axios.post("https://upload-z1.qiniup.com", formData, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data"
+    //       }
+    //     }).then(res => {
+    //       // console.log(res);
+    //       this.$emit("success", res.data.url);
+    //     });
+    // }
   },
   watch: {
     value(val) {

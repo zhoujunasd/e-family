@@ -11,6 +11,9 @@ const components = {
   userInfo: () => import('./views/user/userInfo.vue'),
   cloudInteract: () => import('./views/user/cloudInteract.vue'),
   userPoint: () => import('./views/user/userPoint.vue'),
+  pointDetail: () => import('./views/user/pointDetail.vue'),
+  editPassword: () => import('./views/user/editPassword.vue'),
+  partyCost: () => import('./views/user/partyCost.vue'),
   Login: () => import('./views/Login/Login.vue'),
   MenuItem: () => import('./views/Menuitem/ListMessage.vue'),
   MenuArticle: () => import('./views/Menuitem/MenuArticle.vue'),
@@ -108,6 +111,21 @@ const router =  new Router({
       name: 'userPoint',
       meta:{ title: '个人量化积分',requireAuth: true },
       component: components.userPoint
+    },{
+      path: '/pointDetail',
+      name: 'pointDetail',
+      meta:{ title: '积分明细'},
+      component: components.pointDetail
+    },{
+      path: '/editPassword',
+      name: 'editPassword',
+      meta:{ title: '修改密码', requireAuth: true},
+      component: components.editPassword
+    },{
+      path: '/partyCost',
+      name: 'partyCost',
+      meta:{ title: '党费缴纳', requireAuth: true},
+      component: components.partyCost
     }
   ]
 });
@@ -144,6 +162,6 @@ router.beforeEach((to, from, next)=>{
   }else{
     next()
   }
-}) 
+})
 
 export default router
