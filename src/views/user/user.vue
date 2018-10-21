@@ -2,7 +2,7 @@
   <div class="user-content">
     <div class="top-message">
       <div class="top-img">
-        <img v-if='!userData' src='../../assets/imgs/bt_bg.png' alt="">
+        <img v-if='!userData.header' src='../../assets/imgs/bt_bg.png' alt="">
         <img v-else :src='userData.header' alt="">
       </div>
       <div class="top-title">
@@ -160,11 +160,6 @@ export default {
     }
   }
 }
-// http://oowantxlb.bkt.clouddn.com/upload/front/d5a425c8da6bc89f34260914aed7d3ce.png
-// http://oowantxlb.bkt.clouddn.com/upload/front/5167b45bcba29c69c5ba024fd62af637.png
-// http://oowantxlb.bkt.clouddn.com/upload/front/6257541e9c8e82323646abc6dbc574ab.png
-// branchId: 29A1C8A892B84B1AA81C877499F7497F
-// education: 31111111
 </style>
 
 

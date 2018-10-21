@@ -14,6 +14,7 @@ const components = {
   pointDetail: () => import('./views/user/pointDetail.vue'),
   editPassword: () => import('./views/user/editPassword.vue'),
   partyCost: () => import('./views/user/partyCost.vue'),
+  interactionDetail: () => import('./views/user/interactionDetail.vue'),
   Login: () => import('./views/Login/Login.vue'),
   MenuItem: () => import('./views/Menuitem/ListMessage.vue'),
   MenuArticle: () => import('./views/Menuitem/MenuArticle.vue'),
@@ -126,6 +127,11 @@ const router =  new Router({
       name: 'partyCost',
       meta:{ title: '党费缴纳', requireAuth: true},
       component: components.partyCost
+    },{
+      path: '/interactionDetail',
+      name: 'interactionDetail',
+      meta:{ title: '党员云互动'},
+      component: components.interactionDetail
     }
   ]
 });

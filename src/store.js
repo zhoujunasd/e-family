@@ -10,6 +10,7 @@ export default new Vuex.Store({
     token: '',
     readOnly: true,
     img: "",
+    row:{}
   },
   mutations: {
     GTE_INFO(state,userinfo){
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     CHANGE_IMG(state,imgstr){
       state.img = imgstr
+    },
+    CHANGE_ROW(state,row){
+      state.row = row
     },
   },
   actions: {},

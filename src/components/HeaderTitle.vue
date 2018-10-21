@@ -49,8 +49,10 @@ export default {
           joinPartyTime: this.$store.state.userData.joinPartyTime,
           lastPayTime: this.$store.state.userData.lastPayTime,
           partyStatus: this.$store.state.userData.partyStatus,
-          header: this.$store.state.img
         };
+        if(this.$store.state.img){
+          Object.assign(formData,{header: this.$store.state.img,})
+        }
         this.$axios.post("/user/modifyInfo.do", formData).then(res => {
           // console.log(res);
           if (res.code == 1) {
