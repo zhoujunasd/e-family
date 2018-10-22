@@ -2,7 +2,7 @@
   <div class="user-content">
     <div class="top-message">
       <div class="top-img">
-        <img v-if='!userData.header' src='../../assets/imgs/bt_bg.png' alt="">
+        <img v-if='!userData' src='../../assets/imgs/bt_bg.png' alt="">
         <img v-else :src='userData.header' alt="">
       </div>
       <div class="top-title">
@@ -71,12 +71,13 @@ export default {
   },
   created(){
     this.getData()
+    this.$store.commit('CHANGE_READONLY',true)
   },
   watch: {
 
   },
   computed: {
-    ...mapState(["userData"]),
+    ...mapState(["userData",'token']),
   }
 };
 </script>

@@ -62,7 +62,7 @@ export default {
               //   "Content-Type": "x-www-form-urlencoded"
               // }
             }).then((res) => {
-              console.log(res);
+              // console.log(res);
               _this.$store.commit('CHANGE_IMG',res.url)
             })
           }

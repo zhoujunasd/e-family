@@ -33,6 +33,7 @@ import { Spinner } from "mint-ui";
   padding: 0.2rem 0;
   color: #666;
   font-size: 0.28rem;
+  margin-bottom: 10px;
 //   background-color: #fff;
   .spinner {
     display: inline-block;

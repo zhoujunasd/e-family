@@ -80,10 +80,9 @@ export default {
       this.add_wrap = false;
     },
     huifuhandle(val) {
-      this.$store.commit('CHANGE_ROW',val)
+      this.$store.commit("CHANGE_ROW", val);
       this.$router.push("/interactionDetail");
-      console.log(this.$store.state.row);
-      
+      // console.log(this.$store.state.row);
     },
     getData() {
       this.$axios
@@ -209,6 +208,10 @@ export default {
   .inter-top {
     // display: flex;
     // justify-content: space-between;
+    .top-left {
+      width: 40px;
+      height: 40px;
+    }
     height: 45px;
     .top-right {
       color: red;
@@ -226,6 +229,7 @@ export default {
       border-radius: 50%;
     }
     .top-nsername {
+      height: 20px;
       font-size: 18px;
       color: #333;
       font-weight: 600;
@@ -246,6 +250,10 @@ export default {
   .inter-center {
     height: 20px;
     margin: 10px 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
   .inter-bottom {
     text-align: right;

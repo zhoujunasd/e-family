@@ -22,6 +22,10 @@ const components = {
   HistoryToday: () => import('./views/Menuitem/HistoryToday.vue'),
   HandLive: () => import('./views/Menuitem/HandLive.vue'),
   BMap: () => import('./views/Menuitem/BMap.vue'),
+  Audit: () => import('./views/Menuitem/Audit.vue'),
+  personalsummary: () => import('./views/Menuitem/personalsummary.vue'),
+  discuss: () => import('./views/Menuitem/discuss.vue'),
+  Members: () => import('./views/Menuitem/Members.vue'),
 }
 
 const router =  new Router({
@@ -72,10 +76,35 @@ const router =  new Router({
       meta:{ title: '掌上组织生活' },
       component: components.HandLive
     },{
+      path: '/LifeChoice',
+      name: 'LifeChoice',
+      meta:{ title: '掌上组织生活' },
+      component: components.HandLive
+    },{
       path: '/bmap',
       name: 'bmap',
       meta:{ title: '流动党员找组织' },
       component: components.BMap
+    },{
+      path: '/audit',
+      name: 'audit',
+      meta:{ title: '正在审核...（未知）' },
+      component: components.Audit
+    },{
+      path: '/discuss',
+      name: 'discuss',
+      meta:{ title: '民主评议' },
+      component: components.discuss
+    },{
+      path: '/members',
+      name: 'members',
+      meta:{ title: '参评议员' },
+      component: components.Members
+    },{
+      path: '/personalsummary',
+      name: 'personalsummary',
+      meta:{ title: '个人总结' },
+      component: components.personalsummary
     },{
       path: '/userInfo',
       name: 'userInfo',

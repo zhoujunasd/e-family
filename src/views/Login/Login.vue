@@ -67,7 +67,7 @@ export default {
             });
             setTimeout(() => {
               instance.close();
-              // console.log(this.$route);z
+              // console.log(this.$route);
               // console.log(this.$router);
               // console.log(typeof this.$route.query.redirect);
               if(typeof this.$route.query.redirect == 'undefined'){

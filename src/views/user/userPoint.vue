@@ -92,7 +92,11 @@ export default {
           this.point = res.data.totalScore;
         })
         .catch(err => {
-          Toast;
+         Toast({
+            message: res.msg,
+            position: "top",
+            duration: 500
+          });
         });
     }
   },

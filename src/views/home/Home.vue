@@ -92,7 +92,7 @@ export default {
     return {
       swiper: null,
       swiperOption: {
-        // autoplay: true,
+        autoplay: true,
         pagination: {
           el: ".swiper-pagination"
           // autoplay: true

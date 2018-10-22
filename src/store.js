@@ -22,6 +22,9 @@ export default new Vuex.Store({
     CHANGE_READ(state){
       state.readOnly = !state.readOnly
     },
+    CHANGE_READONLY(state,val){
+      state.readOnly = val
+    },
     CHANGE_IMG(state,imgstr){
       state.img = imgstr
     },
