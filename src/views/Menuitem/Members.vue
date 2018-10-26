@@ -1,7 +1,7 @@
 <template>
     <div class="mem-wrap" infinite-scroll-disabled="loading" v-infinite-scroll="loadBottom" infinite-scroll-distance="10">
         <div v-for="(item,index) in rows" :key='index'>
-            <div class="item-wrap">
+            <div class="item-wrap" @click="handleclick(item.id)">
                 <!-- 当图片错误时，显示默认图片 -->
                 <img onerror='this.src="http://oowantxlb.bkt.clouddn.com/upload/front/4470566e228087f9f66ef039be58cbe9.png"' :src="item.header" alt="">
                 {{item.username}}
@@ -27,6 +27,29 @@ export default {
     };
   },
   methods: {
+    handleclick(id){
+      // console.log(id);
+      // this.$axios.get(`/nationComment/isComment.do?user_id=${this.$store.state.token}&other_user_id=${id}&id=${a}&comment_id=${a}`)
+      this.$axios.get(`/nationComment/isComment.do?user_id=${this.$store.state.token}&other_user_id=${id}&id=CEBBD1A4FF2147C8B9ED0CEA6AE90BCF&comment_id=CEBBD1A4FF2147C8B9ED0CEA6AE90BCF`)
+        .then(res => {
+          // console.log(res);
+          if(res.code == 0){
+            Toast({
+              message: res.msg,
+              position: "top",
+              duration: 1500
+            });
+          } else {
+            Toast({
+              message: "error" + res.msg,
+              position: "top",
+              duration: 1000
+            });
+          }
+        }).catch(err => {
+          MessageBox("错误", "请检查网络链接！！！");
+        })
+    },
     loadBottom(){
         this.page++
         this.loading = true
@@ -40,7 +63,7 @@ export default {
           }&user_id=${this.$store.state.token}&page=${this.page}&rows=10`
         )
         .then(res => {
-          console.log(res);
+          // console.log(res);
           if (res.code == 1) {
             // this.rows = res.rows;
             this.rows = this.rows.concat(res.rows)
